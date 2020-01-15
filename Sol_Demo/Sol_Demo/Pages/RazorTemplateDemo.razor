@@ -1,0 +1,28 @@
+﻿@page "/demo/razortemplate"
+
+<div>
+    @TimeTemplate
+</div>
+
+<div>
+    @UserTemplates(new UserModel() { FullName="Kishor Naik"})
+</div>
+
+@code {
+
+    private RenderFragment TimeTemplate =@<p>The time is @DateTime.Now</p>;
+
+    private RenderFragment<UserModel> UserTemplates = (userModelObj) =>@<div>
+    
+        <ul>
+            <li>@userModelObj.FullName</li>
+        </ul>
+        
+    </div>;
+
+
+    private class UserModel
+    {
+        public String FullName { get; set; }
+    }
+}
